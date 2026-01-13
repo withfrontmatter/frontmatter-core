@@ -1,0 +1,28 @@
+---
+export interface Props {
+  heading?: string;
+}
+
+type Work = {
+  id: string;
+  title: string;
+  client: string;
+  year: number;
+  cover?: string;
+};
+
+import rawWorks from "../data/works.yml";
+
+const works = rawWorks as Work[];
+const { heading = "Selected work" } = Astro.props;
+---
+<section>
+  <h2>{heading}</h2>
+  <ul>
+    {works.map((w) => (
+      <li>
+        <strong>{w.title}</strong> — {w.client} ({w.year})
+      </li>
+    ))}
+  </ul>
+</section>

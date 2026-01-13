@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title = "About", subtitle = "A tiny project with mixed content sources." } = Astro.props;
+---
+<BaseLayout title="About">
+  <Hero title={title} subtitle={subtitle} />
+  <p>This page exists to test .astro page scanning.</p>
+</BaseLayout>

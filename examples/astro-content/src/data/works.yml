@@ -1,0 +1,11 @@
+- id: nike
+  title: Nike Campaign
+  client: Nike
+  year: 2024
+  cover: /images/work-nike.jpg
+
+- id: apple
+  title: Apple Landing Page
+  client: Apple
+  year: 2023
+  cover: /images/work-apple.jpg

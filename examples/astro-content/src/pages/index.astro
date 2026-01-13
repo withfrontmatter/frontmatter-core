@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import WorksList from "../components/WorksList.astro";
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title = "Astro Content Example", subtitle = "Astro + MD + YAML + nested routes" } = Astro.props;
+---
+<BaseLayout title="Home" description="Example project for Frontmatter Core">
+  <Hero title={title} subtitle={subtitle} />
+  <WorksList heading="Works from YAML" />
+</BaseLayout>

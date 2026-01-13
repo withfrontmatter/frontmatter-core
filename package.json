@@ -1,0 +1,24 @@
+{
+  "name": "frontmatter-core",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "frontmatter": "./dist/cli/index.js",
+    "fm": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "fm": "node dist/cli/index.js"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}

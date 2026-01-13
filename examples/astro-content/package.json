@@ -1,0 +1,15 @@
+{
+  "name": "astro-content",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "astro": "^4.5.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.0"
+  }
+}
