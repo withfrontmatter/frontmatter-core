@@ -1,6 +1,11 @@
-# Frontmatter Core
+<p align="center">
+  <img src="https://github.com/withfrontmatter/.github/blob/main/frontmatter-logo-512.png" width="120" />
+</p>
 
-Zero-runtime CMS bridge for Astro → Headless CMS
+<h1 align="center">Frontmatter Core</h1>
+
+<p align="center">Zero-runtime CMS bridge for Astro → Headless CMS</p>
+<br><br>
 
 ## What is this
 
