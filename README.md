@@ -18,7 +18,7 @@ It scans your Astro files, Markdown pages and YAML datasets, and produces a clea
 - Components
 - Data collections
 
-This representation is written into a `.frontmatter/` folder and can then be consumed by adapters (Grav, Kirby, Craft, Strapi, etc.) to generate CMS themes, blueprints and content structures.
+This representation is written into a `.frontmatter/` folder and can then be consumed by adapters (for example: flat-file CMS or headless CMS implementations) to generate CMS themes, blueprints, and content structures.
 
 Frontmatter does **not** run in production.
 It is a **build-time tool**.
@@ -164,17 +164,38 @@ It does **not**:
 
 Adapters do that.
 
-## Commercial tiers
+## Non-goals
 
-This repository is open-source.
+Frontmatter Core does not:
+- Act as a CMS
+- Provide a user interface
+- Manage content, users or permissions
+- Guarantee compatibility with any CMS
+- Provide hosting, syncing or deployment
 
-Paid editions exist that include:
+Frontmatter Core produces a data contract.
+What you build on top of it is your responsibility.
 
-- Grav theme generator
-- Grav blueprint generator
-- Grav Sync engine
+## Commercial editions
 
-Other CMS adapters may exist in the future, but Grav is the reference implementation.
+This repository contains the core engine only.
+
+Commercial editions may exist that package:
+- Reference adapters
+- Templates
+- Scripts and tooling around the core
+
+These editions do not change the core behavior.
+They provide convenience and packaging, not managed services.
+
+No compatibility, support or upgrade guarantees are implied.
+
+## Support
+
+This project is provided as-is.
+
+There is no guaranteed support, SLA, or compatibility promise.
+Issues and discussions are community-driven.
 
 ## License
 
@@ -183,5 +204,6 @@ MIT
 ## Status
 
 This is an early developer release.<br>
-The internal schema is stable.<br>
-Adapters can safely be built on top of it.<br>
+The internal schema is versioned and designed to be stable.<br>
+Breaking changes, if any, will be explicit and documented.<br>
+
