@@ -1,6 +1,6 @@
 {
   "name": "@withfrontmatter/core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "type": "module",
   "license": "MIT",
@@ -10,6 +10,7 @@
   },
   "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.json",
     "dev": "tsc -p tsconfig.json --watch",
     "fm": "node dist/cli/index.js",
@@ -22,5 +23,16 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withfrontmatter/frontmatter-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/withfrontmatter/frontmatter-core/issues"
+  },
+  "homepage": "https://frontmatter.tech",
+  "engines": { "node": ">=18" },
+  "publishConfig": { "access": "public" },
+  "main": "./dist/core/index.js"
 }
