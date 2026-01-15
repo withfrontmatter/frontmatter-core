@@ -133,7 +133,21 @@ This is not a site builder.<br>
 This is not a WYSIWYG.<br>
 This is a data layer.
 
-## Install
+## Install (npm)
+
+Frontmatter Core can be used directly via npm.
+
+Install as a dependency:
+
+`pnpm add @withfrontmatter/core`
+
+Or run it without installation:
+
+`npx @withfrontmatter/core scan`
+
+This will generate the `.frontmatter/` directory in your Astro project.
+
+## Install (development)
 
 From the repository root:
 ```
