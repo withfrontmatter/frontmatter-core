@@ -20,7 +20,9 @@ export type ExportedProp = {
   type: FieldType;
   required: boolean;
   default?: string | number | boolean | null;
+  rawType?: string;
 };
+
 
 export type AstroParseResult = {
   exportedProps: ExportedProp[];
@@ -87,6 +89,7 @@ function extractPropsInterface(frontmatter: string): ExportedProp[] {
       key,
       type: mapTsType(typeRaw),
       required: !optional,
+      rawType: typeRaw,
     });
   }
 

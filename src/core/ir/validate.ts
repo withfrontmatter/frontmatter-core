@@ -45,6 +45,12 @@ function validateField(pageId: string, f: Field): string[] {
   const e: string[] = [];
   if (!f?.key) e.push(`Page(${pageId}) field missing key`);
   if (!f?.type) e.push(`Page(${pageId}) field(${f?.key ?? "?"}) missing type`);
+  if (f.source && f.source !== "astro" && f.source !== "markdown" && f.source !== "yaml") {
+    e.push(`Page(${pageId}) field(${f.key}) invalid source: ${String(f.source)}`);
+  }
+  if (f.rawType && typeof f.rawType !== "string") {
+    e.push(`Page(${pageId}) field(${f.key}) rawType must be string`);
+  }
   if (typeof f?.required !== "boolean") e.push(`Page(${pageId}) field(${f?.key ?? "?"}) required must be boolean`);
   return e;
 }

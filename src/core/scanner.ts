@@ -4,7 +4,7 @@ import { parseAstroFile } from "./parser/astro.js";
 import { parseMarkdownFile } from "./parser/markdown.js";
 import { parseYamlFile } from "./parser/yaml.js";
 import { inferRouteFromPage } from "./utils/path.js";
-import type { FrontmatterBuild, FrontmatterManifest, FrontmatterError } from "./ir/types.js";
+import type { FrontmatterBuild, FrontmatterManifest, FrontmatterError, Field } from "./ir/types.js";
 import { validateBuild } from "./ir/validate.js";
 
 export type ScanOptions = {
@@ -47,6 +47,20 @@ function shouldIgnorePath(absPath: string): boolean {
   return parts.some((seg) => seg.startsWith("_") || seg.startsWith("."));
 }
 
+function astroPropsToFields(
+  props: Array<{ key: string; type: any; required: boolean; default?: any; rawType?: string }>
+): Field[] {
+  return props.map((p) => ({
+    key: p.key,
+    type: p.type,
+    required: p.required,
+    default: p.default ?? undefined,
+    rawType: p.rawType,
+    source: "astro",
+  }));
+}
+
+
 export async function scan(opts: ScanOptions): Promise<ScanResult> {
   const { root, verbose } = opts;
 
@@ -82,7 +96,7 @@ export async function scan(opts: ScanOptions): Promise<ScanResult> {
     componentsIndex[relPath] = {
       id: relPath,
       file: relPath,
-      exportedProps: parsed.exportedProps,
+      exportedProps: astroPropsToFields(parsed.exportedProps),
     };
 
     if (verbose) console.log(`• parsed astro ${relPath}`);
@@ -110,7 +124,7 @@ export async function scan(opts: ScanOptions): Promise<ScanResult> {
         route,
         file: relPath,
         components: usedComponents.map((p) => rel(root, p)),
-        fields: parsed.exportedProps,
+        fields: astroPropsToFields(parsed.exportedProps),
         sourceType: "astro",
       });
 

@@ -4,7 +4,7 @@
 
 <h1 align="center">Frontmatter Core</h1>
 
-<p align="center">Zero-runtime CMS bridge for Astro → Headless CMS</p>
+<p align="center">Zero-runtime CMS bridge for Astro → CMS adapters</p>
 <br><br>
 
 ## What is this
@@ -42,6 +42,14 @@ Adapters, reference implementations, and examples live outside the core.
 
 ---
 
+## Stability
+
+Frontmatter Core exposes a versioned Intermediate Representation (IR).
+
+IR v1 is stable (schemaVersion: 2).
+- Backward-compatible additions only.
+- Breaking changes will only happen in a future IR v2 and will be documented.
+
 
 ## What it does
 
@@ -68,6 +76,27 @@ From those files it extracts:
 - Structured collections (lists and objects)
 
 It builds a unified **Internal Representation (IR)** describing your site.
+
+### Field rules
+
+Each extracted field includes:
+
+- `key`: the field name
+- `type`: `string | number | boolean | unknown` (best-effort)
+- `required`: when `true`, missing values should be treated as validation errors by consumers
+- `default` (optional): a fallback value when provided
+- `rawType` (optional): best-effort original type information (e.g. TypeScript annotation)
+- `source` (optional): where the field was extracted from (`astro`, `markdown`, `yaml`)
+
+Frontmatter Core itself does not enforce content presence at runtime; required is part of the data contract.
+
+Type extraction is best-effort. Complex TypeScript types may be reduced to `unknown`.
+
+### Component usage
+
+For each page, `components[]` lists the components directly referenced in that page file (non-transitive).<br>
+It does not include components used inside other components or layouts.<br>
+`componentsIndex` is an index of parsed .astro files (components and pages).
 
 ## What you get
 

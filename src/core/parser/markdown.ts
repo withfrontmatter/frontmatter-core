@@ -34,6 +34,12 @@ function inferFields(obj: Record<string, any>): Field[] {
       typeof value === "boolean" ? "boolean" :
       "unknown";
 
-    return { key, type: t, required: false };
+    return {
+      key,
+      type: t,
+      required: false,
+      source: "markdown",
+    };
+
   });
 }

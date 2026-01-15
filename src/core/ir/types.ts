@@ -1,17 +1,36 @@
 export type FieldType = "string" | "number" | "boolean" | "unknown";
 
+export type FieldSource = "astro" | "markdown" | "yaml";
+
 export type Field = {
   key: string;
   type: FieldType;
   required: boolean;
   default?: string | number | boolean | null;
+
+  /**
+   * Best-effort original type information (e.g. TS type annotation).
+   * Not guaranteed to be present.
+   */
+  rawType?: string;
+
+  /**
+   * Where this field was extracted from.
+   */
+  source?: FieldSource;
 };
 
 export type PageModel = {
   id: string;       // rel path
   route: string;    // inferred route
   file: string;     // rel path
+
+  /**
+   * Components directly used in this page file (non-transitive).
+   * This does NOT include components used inside other components or layouts.
+   */
   components: string[];
+
   fields: Field[];
   sourceType?: "astro" | "markdown";
 };
