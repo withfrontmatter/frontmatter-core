@@ -31,6 +31,17 @@ Your design stays untouched.<br>
   <img src="https://github.com/withfrontmatter/.github/blob/main/frontmatter-core-diagram.png" />
 </p>
 
+---
+
+### Scope
+
+This repository contains the core engine only.
+
+It builds a stable, versioned Intermediate Representation (IR).<br>
+Adapters, reference implementations, and examples live outside the core.
+
+---
+
 
 ## What it does
 
