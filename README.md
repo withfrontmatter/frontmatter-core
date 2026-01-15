@@ -27,6 +27,11 @@ Your Astro site remains fast, static and framework-free.<br>
 The CMS only edits data.<br>
 Your design stays untouched.<br>
 
+<p align="center">
+  <img src="https://github.com/withfrontmatter/.github/blob/main/frontmatter-core-diagram.png" />
+</p>
+
+
 ## What it does
 
 Frontmatter Core reads:
