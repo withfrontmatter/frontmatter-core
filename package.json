@@ -8,10 +8,12 @@
     "frontmatter": "./dist/cli/index.js",
     "fm": "./dist/cli/index.js"
   },
+  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "dev": "tsc -p tsconfig.json --watch",
-    "fm": "node dist/cli/index.js"
+    "fm": "node dist/cli/index.js",
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
