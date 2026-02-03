@@ -1,14 +1,22 @@
 {
   "name": "@withfrontmatter/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "type": "module",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "frontmatter": "./dist/cli/index.js",
     "fm": "./dist/cli/index.js"
   },
   "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.json",
@@ -33,6 +41,5 @@
   },
   "homepage": "https://frontmatter.tech",
   "engines": { "node": ">=18" },
-  "publishConfig": { "access": "public" },
-  "main": "./dist/core/index.js"
+  "publishConfig": { "access": "public" }
 }
