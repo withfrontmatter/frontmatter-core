@@ -1,6 +1,6 @@
 {
   "name": "@withfrontmatter/core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "type": "module",
   "license": "MIT",
@@ -10,7 +10,11 @@
     "frontmatter": "./dist/cli/index.js",
     "fm": "./dist/cli/index.js"
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -40,6 +44,10 @@
     "url": "https://github.com/withfrontmatter/frontmatter-core/issues"
   },
   "homepage": "https://frontmatter.tech",
-  "engines": { "node": ">=18" },
-  "publishConfig": { "access": "public" }
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
