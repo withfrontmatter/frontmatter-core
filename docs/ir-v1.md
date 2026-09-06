@@ -1,6 +1,7 @@
 # Frontmatter IR v1 (schemaVersion: 2)
 
-This document describes the public contract produced by Frontmatter Core.
+This document describes the legacy contract produced by Frontmatter Core 1.x.
+The current contract is [IR v2](./ir-v2.md).
 
 ## Stability
 

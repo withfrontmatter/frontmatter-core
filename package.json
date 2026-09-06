@@ -1,6 +1,6 @@
 {
   "name": "@withfrontmatter/core",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "private": false,
   "type": "module",
   "license": "MIT",
@@ -24,6 +24,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.json",
+    "test": "pnpm build && node --test tests/*.test.mjs",
     "dev": "tsc -p tsconfig.json --watch",
     "fm": "node dist/cli/index.js",
     "prepublishOnly": "pnpm build"

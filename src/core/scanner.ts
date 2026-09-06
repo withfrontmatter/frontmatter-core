@@ -5,6 +5,7 @@ import { parseMarkdownFile } from "./parser/markdown.js";
 import { parseYamlFile } from "./parser/yaml.js";
 import { inferRouteFromPage } from "./utils/path.js";
 import type { FrontmatterBuild, FrontmatterManifest, FrontmatterError, Field } from "./ir/types.js";
+import { SCHEMA_VERSION } from "./ir/schema.js";
 import { validateBuild } from "./ir/validate.js";
 
 export type ScanOptions = {
@@ -160,6 +161,7 @@ export async function scan(opts: ScanOptions): Promise<ScanResult> {
       id,
       file: relPath,
       format: "yaml",
+      kind: Array.isArray(parsed.data) ? "collection" : "config",
       data: parsed.data,
       hash: fileHashes[relPath]!, // reuse file hash
     });
@@ -168,7 +170,7 @@ export async function scan(opts: ScanOptions): Promise<ScanResult> {
   }
 
   const build: FrontmatterBuild = {
-    schemaVersion: 2,
+    schemaVersion: SCHEMA_VERSION,
     generatedAt: Date.now(),
     project: { root, name: basename(root) },
     pages,
@@ -180,7 +182,7 @@ export async function scan(opts: ScanOptions): Promise<ScanResult> {
   const errors: FrontmatterError[] = [...validationErrors];
 
   const manifest: FrontmatterManifest = {
-    schemaVersion: 2,
+    schemaVersion: SCHEMA_VERSION,
     generatedAt: build.generatedAt,
     project: build.project,
     files: fileHashes,

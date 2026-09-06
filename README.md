@@ -46,9 +46,12 @@ Adapters, reference implementations, and examples live outside the core.
 
 Frontmatter Core exposes a versioned Intermediate Representation (IR).
 
-IR v1 is stable (schemaVersion: 2).
+IR v2 is stable (`schemaVersion: 3`).
 - Backward-compatible additions only.
-- Breaking changes will only happen in a future IR v2 and will be documented.
+- Breaking changes require a new IR version and are documented.
+
+See [IR v2](docs/ir-v2.md) and the
+[IR v1 to v2 migration](docs/ir-v2.md#migration-from-ir-v1).
 
 
 ## What it does
@@ -73,7 +76,8 @@ From those files it extracts:
 
 ### From YAML datasets
 
-- Structured collections (lists and objects)
+- Collections (root arrays)
+- Configuration datasets (root objects)
 
 It builds a unified **Internal Representation (IR)** describing your site.
 

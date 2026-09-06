@@ -1,10 +1,13 @@
 import type { PageModel, Field, DatasetModel } from "./types.js";
+import { SCHEMA_VERSION } from "./schema.js";
 
 export function validateBuild(build: any): string[] {
   const errors: string[] = [];
 
   if (!build || typeof build !== "object") return ["Build is not an object."];
-  if (build.schemaVersion !== 2) errors.push(`Unsupported schemaVersion: ${String(build.schemaVersion)}`);
+  if (build.schemaVersion !== SCHEMA_VERSION) {
+    errors.push(`Unsupported schemaVersion: ${String(build.schemaVersion)}`);
+  }
 
   if (!build.project?.root) errors.push("Missing project.root");
   if (!build.project?.name) errors.push("Missing project.name");
@@ -63,6 +66,16 @@ function validateDataset(d: DatasetModel): string[] {
     e.push(`Dataset(${d.id}) missing data`);
   }
   if (d?.format !== "yaml") e.push(`Dataset(${d?.id ?? "?"}) unsupported format: ${String(d?.format)}`);
+  if (d?.kind !== "collection" && d?.kind !== "config") {
+    e.push(`Dataset(${d?.id ?? "?"}) invalid kind: ${String(d?.kind)}`);
+  } else if (d.kind === "collection" && !Array.isArray(d.data)) {
+    e.push(`Dataset(${d.id}) collection data must be an array`);
+  } else if (
+    d.kind === "config"
+    && (typeof d.data !== "object" || d.data === null || Array.isArray(d.data))
+  ) {
+    e.push(`Dataset(${d.id}) config data must be an object`);
+  }
   if (typeof d?.hash !== "string" || !d.hash) e.push(`Dataset(${d?.id ?? "?"}) missing hash`);
   return e;
 }

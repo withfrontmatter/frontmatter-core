@@ -1,3 +1,5 @@
+import type { SCHEMA_VERSION } from "./schema.js";
+
 export type FieldType = "string" | "number" | "boolean" | "unknown";
 
 export type FieldSource = "astro" | "markdown" | "yaml";
@@ -41,16 +43,19 @@ export type ComponentModel = {
   exportedProps: Field[];
 };
 
+export type DatasetKind = "collection" | "config";
+
 export type DatasetModel = {
   id: string;          // dataset id (basename by default)
   file: string;        // rel path
   format: "yaml";
+  kind: DatasetKind;   // collection = array of records, config = keyed object
   data: unknown;       // array | object
   hash: string;        // content hash (or file hash)
 };
 
 export type FrontmatterBuild = {
-  schemaVersion: 2;
+  schemaVersion: typeof SCHEMA_VERSION;
   generatedAt: number;
   project: { root: string; name: string };
   pages: PageModel[];
@@ -59,7 +64,7 @@ export type FrontmatterBuild = {
 };
 
 export type FrontmatterManifest = {
-  schemaVersion: 2;
+  schemaVersion: typeof SCHEMA_VERSION;
   generatedAt: number;
   project: { root: string; name: string };
   files: Record<string, string>; // rel path -> hash
